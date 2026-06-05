@@ -4,6 +4,8 @@ import dev.langchain4j.model.chat.ChatModel;
 import dev.langchain4j.model.googleai.GoogleAiGeminiChatModel;
 import dev.langchain4j.model.ollama.OllamaChatModel;
 import e1.engine.LLMStoryEngine;
+import e1.engine.MemoryStoryEngineDec;
+import e1.engine.StoryMemory;
 import e1.model.Player;
 import e1.model.Story;
 import e1.model.StoryImpl;
@@ -26,7 +28,7 @@ public final class StoryApp {
             .modelName("gemini-3.1-flash-lite-preview")
             .build();
         final Story story = new StoryImpl(
-            new LLMStoryEngine(chatModelWithGemini),
+            new MemoryStoryEngineDec(new LLMStoryEngine(chatModelWithGemini), new StoryMemory(5)),
             new Player("Aria", 100, 15),
             "A mysterious dungeon beneath an ancient castle"
         );

@@ -10,8 +10,9 @@ public class ZeroShotExample {
             .baseUrl(LlmConstants.OLLAMA_BASE_URL)
             .logRequests(true)
             .logResponses(true)
+            .think(false)     
             .modelName(LlmConstants.CHAT_MODEL_QWEN)
-            .numPredict(LlmConstants.MAX_PREDICT_TOKENS)
+            .numPredict(256)
             .temperature(0.0)
             .build();
         final var zeroShot = new ZeroShotAgent(model, "Just reply with the RIGHT number.");
